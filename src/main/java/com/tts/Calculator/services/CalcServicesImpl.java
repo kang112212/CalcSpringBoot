@@ -16,7 +16,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 	CalcRepository calcRepository;
 	
 	public void add(Calculation addCalc) {
-		Long sum = addCalc.getNum1() + addCalc.getNum2();
+		Long sum = (long) (addCalc.getNum1() + addCalc.getNum2());
 		addCalc.setAnswer(sum);
 		String roman =  numToRoman(sum);
 		addCalc.setRoman(roman);
@@ -24,7 +24,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 	}
 	
 	public void sub(Calculation subCalc) {
-		Long difference = subCalc.getNum1() - subCalc.getNum2();
+		Long difference = (long) (subCalc.getNum1() - subCalc.getNum2());
 		subCalc.setAnswer(difference);
 		String roman =  numToRoman(difference);
 		subCalc.setRoman(roman);
@@ -32,7 +32,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 	}
 	
 	public void div(Calculation divCalc) {
-		Long quotient = divCalc.getNum1() / divCalc.getNum2();
+		Long quotient = (long) (divCalc.getNum1() / divCalc.getNum2());
 		divCalc.setAnswer(quotient);
 		String roman =  numToRoman(quotient);
 		divCalc.setRoman(roman);
@@ -40,7 +40,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 	}
 	
 	public void mult(Calculation multCalc) {
-		Long product = multCalc.getNum1() * multCalc.getNum2();
+		Long product = (long) (multCalc.getNum1() * multCalc.getNum2());
 		multCalc.setAnswer(product);
 		String roman =  numToRoman(product);
 		multCalc.setRoman(roman);
@@ -54,15 +54,19 @@ public class CalcServicesImpl implements CalcServicesInt {
 	public String numToRoman(Long answer) {
 		setup();
 		String result = new String();
-		for (Long i : bases)
-		{
-			while (answer >= i)
-			{
-				result += map.get(i);
-				answer -= i;
+			if(answer == 0l) {
+				return "Nulla";
+			} else {
+				for (Long i : bases)
+				{
+					while (answer >= i)
+					{
+						result += map.get(i);
+						answer -= i;
+					}
+				}
+				return result;
 			}
-		}
-		return result;
 	}
 	
 	final static Long[] bases = {

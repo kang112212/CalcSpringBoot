@@ -10,8 +10,8 @@ public class Calculation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private Long num1;
-	private Long num2;
+	private Double num1;
+	private Double num2;
 	private String operation;
 	private Long answer;
 	private String roman;
@@ -20,7 +20,7 @@ public class Calculation {
 	public Calculation() {}
 
 
-	public Calculation(Long num1, Long num2, String operation, Long answer, String roman) {
+	public Calculation(Double num1, Double num2, String operation, Long answer, String roman) {
 		super();
 		this.num1 = num1;
 		this.num2 = num2;
@@ -30,22 +30,22 @@ public class Calculation {
 	}
 
 
-	public Long getNum1() {
+	public Double getNum1() {
 		return num1;
 	}
 
 
-	public void setNum1(Long num1) {
+	public void setNum1(Double num1) {
 		this.num1 = num1;
 	}
 
 
-	public Long getNum2() {
+	public Double getNum2() {
 		return num2;
 	}
 
 
-	public void setNum2(Long num2) {
+	public void setNum2(Double num2) {
 		this.num2 = num2;
 	}
 
@@ -78,9 +78,8 @@ public class Calculation {
 	public void setRoman(String roman) {
 		this.roman = roman;
 	}
+
+
 	
-
-
-
 	
 }
