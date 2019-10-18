@@ -1,4 +1,4 @@
-package com.tts.Calculator.services.companiesRepository;
+package com.tts.Calculator.companiesRepository;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import com.tts.Calculator.controllers.model.Calculation;
 public interface CalcRepository extends CrudRepository<Calculation, Long> {
 
 	public List<Calculation> findAll();
-
 
 
 	

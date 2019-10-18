@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.tts.Calculator.companiesRepository.CalcRepository;
 import com.tts.Calculator.controllers.model.Calculation;
-import com.tts.Calculator.services.companiesRepository.CalcRepository;
 
 @Service
 public class CalcServicesImpl implements CalcServicesInt {
@@ -15,6 +15,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 	@Autowired
 	CalcRepository calcRepository;
 	
+	@Override
 	public void add(Calculation addCalc) {
 		Long sum = (long) (addCalc.getNum1() + addCalc.getNum2());
 		addCalc.setAnswer(sum);
@@ -22,7 +23,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 		addCalc.setRoman(roman);
 		calcRepository.save(addCalc);
 	}
-	
+	@Override
 	public void sub(Calculation subCalc) {
 		Long difference = (long) (subCalc.getNum1() - subCalc.getNum2());
 		subCalc.setAnswer(difference);
@@ -30,7 +31,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 		subCalc.setRoman(roman);
 		calcRepository.save(subCalc);
 	}
-	
+	@Override
 	public void div(Calculation divCalc) {
 		Long quotient = (long) (divCalc.getNum1() / divCalc.getNum2());
 		divCalc.setAnswer(quotient);
@@ -38,7 +39,7 @@ public class CalcServicesImpl implements CalcServicesInt {
 		divCalc.setRoman(roman);
 		calcRepository.save(divCalc);
 	}
-	
+	@Override
 	public void mult(Calculation multCalc) {
 		Long product = (long) (multCalc.getNum1() * multCalc.getNum2());
 		multCalc.setAnswer(product);
@@ -46,11 +47,11 @@ public class CalcServicesImpl implements CalcServicesInt {
 		multCalc.setRoman(roman);
 		calcRepository.save(multCalc);
 	}
-	
+	@Override
 	public List<Calculation> Answer() {
 		return calcRepository.findAll();
 	}
-	
+	@Override
 	public String numToRoman(Long answer) {
 		setup();
 		String result = new String();
@@ -149,7 +150,6 @@ public class CalcServicesImpl implements CalcServicesInt {
 		map.put(500000000000000l, " ((((D)))) ");
 		map.put(900000000000000l, " ((((CM)))) ");
 		map.put(1000000000000000l, " ((((M)))) ");
-	}
-	
+	}	
 	
 }
